@@ -2,7 +2,7 @@
 
 # Tabla de contenido
 1. [Requisitos de la practica](#req)
-2. [Documentación del Código](#doc)
+2. [Inicializar la Base de Datos](#doc)
 
    
 ## Requisitos de la practica <a name="req"></a> 
@@ -30,11 +30,17 @@ http://localhost:3001/api/ads?price=1.95&name=Hardly%20used%20shocks
 
 ### [API] Lista de tags existentes:  
   
-  En desarrollo...  
+- Array con listado de tags:  
+http://localhost:3001/api/ads/tags
   
-### [API] Crear anuncio
+### [API] Crear anuncio  
+   
+- Crear anuncio via API con una petición POST:  
+http://localhost:3001/api/ads/create (parametros en body)  
   
-  En desarrollo...  
+### [API] Subir imagen  
+- Subir imagen via API con petición POST e imagen en el Body (form-data key:image)  
+http://localhost:3001/api/ads/upload (file en el body)  
   
 ### Pagina front-end con posibilidad de filtrar:
 
@@ -44,11 +50,7 @@ http://localhost:3001
 - Front-end filter by Author:  
 http://localhost:3001/author/Paras 
 
-## Documentación <a name="doc"></a>  
-  
-  Aquí se redacta la documentación del cógigo  
-  
-### Inicializar la Base de Datos
+## Inicializar la Base de Datos <a name="doc"></a>  
   
   Para inicializar la base de datos se debe hacer uso del script *bd-init.js* lo cual cargará los siguientes anuncios de muestra:  
   
