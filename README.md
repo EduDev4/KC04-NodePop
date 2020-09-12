@@ -1,9 +1,10 @@
 # NodePop
 
-# Table of Contents
+# Tabla de contenido
 1. [Requisitos de la practica](#req)
 2. [Documentación del Código](#doc)
 
+   
 ## Requisitos de la practica <a name="req"></a> 
   
   Aquí describiremos cómo se han ido completando los diferentes requisitos que se planteaban en la práctica.  
