@@ -11,4 +11,12 @@ router.get('/', async function(req, res, next) {
   res.render('index', { title: 'NodePop' });
 });
 
+router.get('/author/:author', async function(req, res, next) {
+  const author = req.params.author
+  const advertisements = await Advertisement.find({author : author}).exec();
+  res.locals.advertisements = advertisements;
+  console.log(advertisements);
+  res.render('index', { title: 'NodePop' });
+});
+
 module.exports = router;
