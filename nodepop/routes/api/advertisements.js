@@ -30,12 +30,13 @@ router.get('/', async function(req, res, next) {
 
 });
 
-router.get('/price', async function(req, res, next) {
+router.get('/tags', async function(req, res, next) {
   try {
     const filter = {};
 
     //Extract values from Request
     const name = req.query.name;
+    var tags = []
     for(var key in req.query){
       console.log(key + " : " + req.query[key]);
       filter[key] = req.query[key]
@@ -49,11 +50,25 @@ router.get('/price', async function(req, res, next) {
     const fields = req.query.fields;
     
     const advertisements = await Advertisement.list(filter, limit, skip, sort, fields);
-    res.json(advertisements);
+    
+    advertisements.forEach(ad => {
+      ad.tags.forEach(tag => {
+        tags.push(tag)
+      })       
+    });
+    
+    tags = tags.filter(onlyUnique)
+    
+    res.json(tags);
+
   } catch (err) {
     next(err);
   }
 
 });
+
+function onlyUnique(value, index, self) { 
+  return self.indexOf(value) === index;
+}
 
 module.exports = router;

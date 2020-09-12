@@ -13,8 +13,7 @@ const advertisementSchema = mongoose.Schema({
 });
 
 // método estático
-advertisementSchema.statics.list = function(filter, limit, skip, sort, fields) {
- 
+advertisementSchema.statics.list = function(filter, limit, skip, sort, fields) { 
   const query = Advertisement.find(filter);
   query.limit(limit);
   query.skip(skip);
