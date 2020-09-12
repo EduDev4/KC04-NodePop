@@ -41,7 +41,23 @@ http://localhost:3001/api/ads/create (parametros en body)
 ### [API] Subir imagen  
 - Subir imagen via API con petición POST e imagen en el Body (form-data key:image)  
 http://localhost:3001/api/ads/upload (file en el body)  
-  
+
+### [API] Filtros  
+- Por TAG:  
+
+- Por tipo de anuncio (venta o busqueda):  
+*Venta*  
+http://localhost:3001/api/ads?selling=true  
+
+*Busqueda*  
+http://localhost:3001/api/ads?selling=false  
+
+- Por Rango de Precio:  
+http://localhost:3001/api/ads?price=10-50
+
+- Por Nombre de Artículo:  
+http://localhost:3001/api/ads?name=Avocado%20Half
+
 ### Pagina front-end con posibilidad de filtrar:
 
 - Front-end list all Advertisements:  
