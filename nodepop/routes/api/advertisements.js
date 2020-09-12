@@ -1,6 +1,35 @@
 var express = require('express');
 var router = express.Router();
+const multer = require('multer');
 const Advertisement = require('../../models/Advertisement');
+
+
+const storage = multer.diskStorage({
+  destination: function( req, file, cb) {
+    cb(null, 'uploads/');
+  },
+  filename: function(req, file, cb) {
+    const myFilename = `ad_${file.fieldname}_${Date.now()}_${file.originalname}`;
+    cb(null, myFilename);
+  }
+});
+const upload = multer({ storage: storage });
+
+// Guardar Anuncio
+router.post('/create', async (req, res, next) => {
+  try {
+    const adData = req.body;    
+    // creamos el ad en memoria
+    const ad = new Advertisement(adData);
+    // lo guardamos en BD
+    const savedAd = await ad.save();
+
+    res.json({ result: savedAd });
+
+  } catch (err) {
+    next(err);
+  }
+});
 
 /* GET Advertisements quering fields */
 router.get('/', async function(req, res, next) {
