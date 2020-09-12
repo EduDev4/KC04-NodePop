@@ -13,12 +13,18 @@ const advertisementSchema = mongoose.Schema({
 });
 
 // método estático
-advertisementSchema.statics.lista = function(filtro, limit, skip, sort, fields) {
-  const query = Agente.find(filtro);
+advertisementSchema.statics.list = function(filter, limit, skip, sort, fields) {
+ 
+  const query = Advertisement.find(filter);
   query.limit(limit);
   query.skip(skip);
   query.sort(sort);
   query.select(fields);
+  return query.exec();
+}
+
+advertisementSchema.statics.listAll = function() { 
+  const query = Advertisement.find();
   return query.exec();
 }
 

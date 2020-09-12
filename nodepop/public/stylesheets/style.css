@@ -3,6 +3,16 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+article {
+  margin-bottom: 2em;
+}
+a{
+  color: rgb(2, 91, 224);
+  text-decoration: none;
+}
+.tag{
+  background-color:#d1d1d1 ;
+  padding-left: 1em;
+  padding-right: 1em;
+  line-height: 2em;
 }

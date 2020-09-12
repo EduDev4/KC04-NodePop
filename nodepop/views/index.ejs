@@ -8,12 +8,27 @@
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
    
+    <form>
+      <input type="text" placeholder="Search..."></input>
+    </form>
+
     <h2>Anuncios:</h2>
-    <% advertisements.forEach(advertisements => { %>
-      <p>
-        <b><%= advertisement.title %></b><br>
-        <%= advertisement.description %>
-      </p>
-    <% }) %>
+    <% advertisements.forEach(advertisement => { %>
+      <article>
+        <% if (advertisement.selling) {%>
+          <span style='color:green;'>[Selling]</span>
+          <% }else{ %>
+          <span style='color:dodgerblue;'>[Buying]</span>  
+          <% } %>
+          <b><a href='#'><%= advertisement.name %></a></b>
+          | <% if (!advertisement.selling) { %> paying up to <% } %> <span style='color: green;'><%= advertisement.price %> €</span>
+        <p>        
+          <%= advertisement.description %><br>
+          Tags: <% advertisement.tags.forEach(tag => { %>
+            <span class='tag'><%= tag %></span>
+            <% }) %>            
+        </p>
+      </article>
+      <% }) %> 
   </body>
 </html>
