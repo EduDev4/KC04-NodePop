@@ -63,9 +63,21 @@ router.get('/', async function(req, res, next) {
 
     //Extract values from Request and add them to Filter
     const name = req.query.name;
+    var minPrice = 0;
+    var maxPrice = 9999999999; 
     for(var key in req.query){     
       if(key!='limit' && key!='skip' && key!='sort' && key!='fields'){
         filter[key] = req.query[key]
+        // price: { $lte: maxPrice || 1000000000, $gte: minPrice || 0 }
+        console.log(req.query[key]);
+        console.log(key);
+        if(key=='price' && filter[key].indexOf('-')>=0){
+          console.log(req.query[key]);
+          const params = filter[key].split('-');  
+          var minPrice = params[0];
+          var maxPrice = params[1];          
+        }
+        filter[key] = { $lte: maxPrice, $gte: minPrice}
       }
     }    
     // http://localhost:3000/api/ads?limit=2
