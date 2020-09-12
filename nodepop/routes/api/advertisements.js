@@ -6,7 +6,7 @@ const Advertisement = require('../../models/Advertisement');
 
 const storage = multer.diskStorage({
   destination: function( req, file, cb) {
-    cb(null, 'uploads/');
+    cb(null, 'public/images/');
   },
   filename: function(req, file, cb) {
     const myFilename = `ad_${file.fieldname}_${Date.now()}_${file.originalname}`;
@@ -15,7 +15,32 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
-// Guardar Anuncio
+// Subir imagen
+router.post('/upload',  (req, res) => {
+  
+  let upload = multer({ storage: storage }).single('image');
+
+  upload(req, res, function(err) {
+
+      if (req.fileValidationError) {
+          return res.send(req.fileValidationError);
+      }
+      else if (!req.file) {
+          return res.send('Please select an image to upload');
+      }
+      else if (err instanceof multer.MulterError) {
+          return res.send(err);
+      }
+      else if (err) {
+          return res.send(err);
+      }
+
+      // Display uploaded image for user validation
+      res.send(`You have uploaded this image: <br> <img src="${req.file.path}" width="500">`);
+  });
+});
+
+// Crear Anuncio
 router.post('/create', async (req, res, next) => {
   try {
     const adData = req.body;    
