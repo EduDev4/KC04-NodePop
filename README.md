@@ -46,11 +46,11 @@ http://localhost:3001/api/ads/upload (file en el body)
 - Por TAG:  
 
 - Por tipo de anuncio (venta o busqueda):  
-*Venta*  
-http://localhost:3001/api/ads?selling=true  
+  *Venta*  
+  http://localhost:3001/api/ads?selling=true  
 
-*Busqueda*  
-http://localhost:3001/api/ads?selling=false  
+  *Busqueda*  
+  http://localhost:3001/api/ads?selling=false  
 
 - Por Rango de Precio:  
 http://localhost:3001/api/ads?price=10-50
